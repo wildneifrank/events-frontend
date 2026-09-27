@@ -1,0 +1,6 @@
+export { authService } from './auth.service'
+export { dashboardService } from './dashboard.service'
+export { eventsService } from './events.service'
+export { ordersService } from './orders.service'
+export { ticketsService } from './tickets.service'
+export type * from './contracts'
