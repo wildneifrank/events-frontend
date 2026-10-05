@@ -5,14 +5,12 @@ import { delay } from '@/utils/delay'
 const DAY_MS = 86_400_000
 const TZ_OFFSET = '-03:00'
 
-/** ISO timestamp `days` from today at a wall-clock time in America/Fortaleza. */
 export function daysFromNow(days: number, time = '20:00'): string {
   const target = new Date(Date.now() + days * DAY_MS)
   const ymd = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Fortaleza' }).format(target)
   return new Date(`${ymd}T${time}:00${TZ_OFFSET}`).toISOString()
 }
 
-/** Calendar day (YYYY-MM-DD) of an ISO timestamp in America/Fortaleza. */
 export function toDayKey(iso: string): string {
   return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Fortaleza' }).format(new Date(iso))
 }
@@ -25,7 +23,6 @@ export function addHours(iso: string, hours: number): string {
   return new Date(new Date(iso).getTime() + hours * 3_600_000).toISOString()
 }
 
-/** Small deterministic PRNG so generated seeds are stable between reloads. */
 export function createRandom(seed: number) {
   let state = seed >>> 0
   const next = () => {
@@ -42,10 +39,6 @@ export function createRandom(seed: number) {
   }
 }
 
-/**
- * Simulates network latency and, optionally, random failures
- * (see VITE_MOCK_FAILURE_RATE) so every UI state can be exercised.
- */
 export async function simulateNetwork(): Promise<void> {
   await delay(env.mockDelay * (0.6 + Math.random() * 0.8))
   if (env.mockFailureRate > 0 && Math.random() < env.mockFailureRate) {

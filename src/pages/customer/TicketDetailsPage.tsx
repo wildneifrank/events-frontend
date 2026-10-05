@@ -1,4 +1,5 @@
 import { ArrowLeft, CalendarPlus, Download, Info, TicketX, Wallet } from 'lucide-react'
+import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 import { TicketPass } from '@/components/tickets/TicketPass'
@@ -17,6 +18,8 @@ import { ROUTES } from '@/constants/routes'
 import { useTicket } from '@/features/tickets/hooks'
 import { useProcessingPoll } from '@/features/tickets/useProcessingPoll'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
+import { ticketsService } from '@/services'
+import { toErrorMessage } from '@/utils/errors'
 import { formatCurrency, formatDateTime } from '@/utils/format'
 
 const INSTRUCTIONS = [
@@ -31,6 +34,7 @@ export default function TicketDetailsPage() {
   const { status, data, error, errorStatus, reload, isPlaceholder } = useTicket(id)
   const ticket = isPlaceholder ? undefined : data
   const toast = useToast()
+  const [downloading, setDownloading] = useState(false)
   useDocumentTitle(ticket ? `Ingresso · ${ticket.eventTitle}` : 'Ingresso')
   useProcessingPoll(ticket?.status === 'processing', reload, ticket)
 
@@ -73,6 +77,23 @@ export default function TicketDetailsPage() {
 
   const ready = ticket.status === 'valid'
 
+  async function downloadPdf(ticketId: string, code: string) {
+    setDownloading(true)
+    try {
+      const { pdfUrl } = await ticketsService.getTicketById(ticketId)
+      if (pdfUrl?.startsWith('http')) {
+        window.location.assign(pdfUrl)
+        toast.success('Download iniciado', `ingresso-${code}.pdf será salvo no seu dispositivo.`)
+      } else {
+        toast.info('PDF indisponível', 'O arquivo do ingresso ainda não foi gerado.')
+      }
+    } catch (err) {
+      toast.error('Não foi possível baixar o ingresso.', toErrorMessage(err))
+    } finally {
+      setDownloading(false)
+    }
+  }
+
   return (
     <div className="flex flex-col gap-6">
       {back}
@@ -86,13 +107,9 @@ export default function TicketDetailsPage() {
               <Button
                 fullWidth
                 disabled={!ready}
+                loading={downloading}
                 leftIcon={<Download className="size-4" aria-hidden="true" />}
-                onClick={() =>
-                  toast.success(
-                    'Download iniciado',
-                    `${ticket.code}.pdf será salvo no seu dispositivo.`,
-                  )
-                }
+                onClick={() => void downloadPdf(ticket.id, ticket.code)}
               >
                 Baixar ingresso
               </Button>

@@ -4,10 +4,6 @@ import { orderTotals } from '@/utils/pricing'
 
 export const MAX_TICKETS_PER_ORDER = 10
 
-/**
- * Ticket selection lives in the URL (?items=batchId:qty,batchId:qty),
- * so checkout survives reloads and the login redirect.
- */
 export type Selection = Record<string, number>
 
 export function serializeSelection(selection: Selection): string {
@@ -39,7 +35,6 @@ export interface SelectionLine {
   lineTotal: number
 }
 
-/** Resolves a selection against the event, dropping unavailable batches and clamping quantities. */
 export function resolveSelection(event: Event, selection: Selection) {
   const lines: SelectionLine[] = event.batches
     .filter((batch) => (selection[batch.id] ?? 0) > 0 && isBatchPurchasable(batch))

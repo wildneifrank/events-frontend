@@ -20,10 +20,6 @@ interface EventCardProps {
   className?: string
 }
 
-/**
- * The whole card is a single link (one tab stop). "Ver evento" is a visual
- * affordance inside it, not a nested interactive element.
- */
 export const EventCard = memo(function EventCard({ event, className }: EventCardProps) {
   const category = getCategory(event.category)
   const remaining = eventRemaining(event)

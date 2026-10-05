@@ -14,7 +14,6 @@ const TONES = {
   success: 'bg-success',
 }
 
-/** `value` between 0 and 1. */
 export function ProgressBar({ value, label, tone = 'primary', className }: ProgressBarProps) {
   const percent = Math.round(Math.min(Math.max(value, 0), 1) * 100)
   return (

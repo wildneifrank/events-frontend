@@ -8,7 +8,6 @@ interface EventBannerProps {
   category: EventCategory
   alt?: string
   className?: string
-  /** Width hint passed to the image CDN. */
   width?: number
 }
 
@@ -19,7 +18,6 @@ function withWidth(src: string, width?: number) {
   return url.toString()
 }
 
-/** Event image with a branded, category-tinted fallback when the image is missing or fails. */
 export function EventBanner({ src, category, alt = '', className, width }: EventBannerProps) {
   const meta = getCategory(category)
   const Icon = meta.icon

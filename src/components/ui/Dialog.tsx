@@ -18,7 +18,6 @@ interface ConfirmDialogProps {
   onClose: () => void
 }
 
-/** Confirmation dialog for destructive or important actions. */
 export function ConfirmDialog({
   open,
   title,

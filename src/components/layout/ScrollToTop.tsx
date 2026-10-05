@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
-/** Resets scroll on route (pathname) changes; query-string changes keep position. */
 export function ScrollToTop() {
   const { pathname } = useLocation()
   useEffect(() => {

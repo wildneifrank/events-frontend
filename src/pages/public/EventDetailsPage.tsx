@@ -147,7 +147,6 @@ function PurchasePanel({ event }: { event: Event }) {
         </div>
       </Card>
 
-      {/* Mobile sticky CTA */}
       <div className="border-border bg-surface/95 fixed inset-x-0 bottom-0 z-20 border-t p-4 backdrop-blur lg:hidden">
         <div className="flex items-center justify-between gap-4">
           <div className="flex flex-col">
@@ -203,7 +202,7 @@ export default function EventDetailsPage() {
         toast.success('Link copiado!', 'Compartilhe com seus amigos.')
       }
     } catch {
-      // user cancelled the share sheet
+      return
     }
   }
 

@@ -13,15 +13,9 @@ export interface ModalProps {
   children?: ReactNode
   footer?: ReactNode
   size?: keyof typeof SIZES
-  /** Prevent closing via Esc/backdrop, e.g. while a request is running. */
   dismissible?: boolean
 }
 
-/**
- * Built on the native <dialog> element: focus trapping, Esc handling,
- * inert background and top-layer rendering come from the browser.
- * Renders as a bottom sheet on mobile and a centered dialog on larger screens.
- */
 export function Modal({
   open,
   onClose,

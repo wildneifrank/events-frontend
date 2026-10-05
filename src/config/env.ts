@@ -1,8 +1,3 @@
-/**
- * Centralized, typed access to environment variables.
- * Never read `import.meta.env` directly outside this file.
- * Only public values belong here — the frontend must never hold secrets.
- */
 function readNumber(value: string | undefined, fallback: number): number {
   const parsed = Number(value)
   return Number.isFinite(parsed) ? parsed : fallback

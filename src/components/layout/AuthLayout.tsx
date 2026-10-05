@@ -13,7 +13,6 @@ const HIGHLIGHTS = [
   'Reembolso facilitado em caso de cancelamento',
 ]
 
-/** Split layout for login/register: form on the left, brand panel on large screens. */
 export function AuthLayout() {
   return (
     <div className="grid min-h-dvh lg:grid-cols-2">

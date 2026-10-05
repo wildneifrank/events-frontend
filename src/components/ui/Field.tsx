@@ -14,7 +14,6 @@ export interface FieldProps {
   children: ReactNode
 }
 
-/** Label + control + hint/error wiring shared by every form control. */
 export function Field({ id, label, hint, error, required, className, children }: FieldProps) {
   const ids = fieldIds(id)
   return (

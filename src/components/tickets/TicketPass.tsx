@@ -18,7 +18,6 @@ function Detail({ label, value, className }: { label: string; value: string; cla
   )
 }
 
-/** The printable-looking ticket shown on the ticket details page. */
 export function TicketPass({ ticket }: { ticket: Ticket }) {
   const processing = ticket.status === 'processing'
   const inactive = ticket.status === 'used' || ticket.status === 'cancelled'
@@ -62,7 +61,6 @@ export function TicketPass({ ticket }: { ticket: Ticket }) {
         </dl>
       </div>
 
-      {/* Tear line */}
       <div className="bg-surface relative h-0" aria-hidden="true">
         <span className="bg-background absolute -top-3 -left-3 size-6 rounded-full" />
         <span className="bg-background absolute -top-3 -right-3 size-6 rounded-full" />

@@ -11,7 +11,6 @@ interface RequireAuthProps {
   children: ReactNode
 }
 
-/** Route guard: redirects to login (keeping the target URL) or home when the role does not match. */
 export function RequireAuth({ role, children }: RequireAuthProps) {
   const { user } = useAuth()
   const location = useLocation()

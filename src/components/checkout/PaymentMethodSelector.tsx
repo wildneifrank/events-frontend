@@ -23,7 +23,6 @@ interface PaymentMethodSelectorProps {
   onChange: (value: PaymentMethod) => void
 }
 
-/** Radio group styled as selectable cards. */
 export function PaymentMethodSelector({ value, onChange }: PaymentMethodSelectorProps) {
   return (
     <fieldset className="grid gap-3 sm:grid-cols-2">

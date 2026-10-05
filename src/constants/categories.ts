@@ -15,7 +15,6 @@ export interface CategoryMeta {
   label: string
   description: string
   icon: LucideIcon
-  /** Accent used for fallback banners and category chips */
   tint: string
 }
 

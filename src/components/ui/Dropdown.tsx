@@ -15,9 +15,7 @@ export interface DropdownItem {
 }
 
 interface DropdownProps {
-  /** Visible content of the trigger button. */
   trigger: ReactNode
-  /** Accessible name of the trigger button. */
   triggerLabel: string
   triggerClassName?: string
   items: DropdownItem[]
@@ -26,7 +24,6 @@ interface DropdownProps {
   className?: string
 }
 
-/** Accessible menu button: arrow-key navigation, Esc to close, click-outside. */
 export function Dropdown({
   trigger,
   triggerLabel,

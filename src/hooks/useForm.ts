@@ -2,10 +2,6 @@ import { type ChangeEvent, useCallback, useState } from 'react'
 
 export type FormErrors<T> = Partial<Record<keyof T, string>>
 
-/**
- * Tiny form-state helper: values, per-field errors shown after blur/submit,
- * and live re-validation of touched fields.
- */
 export function useForm<T extends Record<string, unknown>>(
   initialValues: T,
   validate: (values: T) => FormErrors<T>,
@@ -21,7 +17,6 @@ export function useForm<T extends Record<string, unknown>>(
     setValues((current) => ({ ...current, [field]: value }))
   }, [])
 
-  /** Props for text-like inputs. */
   const register = (field: keyof T & string) => ({
     name: field,
     value: String(values[field] ?? ''),
@@ -31,7 +26,6 @@ export function useForm<T extends Record<string, unknown>>(
     error: errorFor(field),
   })
 
-  /** Marks the form as submitted; returns true when valid. */
   const submit = () => {
     setSubmitted(true)
     return Object.values(allErrors).every((error) => !error)

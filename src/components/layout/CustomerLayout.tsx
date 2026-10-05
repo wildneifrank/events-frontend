@@ -14,7 +14,6 @@ const ACCOUNT_LINKS = [
   { to: ROUTES.profile, label: 'Perfil', icon: User },
 ]
 
-/** Authenticated customer area. `withNav` shows the account sub-navigation. */
 export function CustomerLayout({ withNav = true }: { withNav?: boolean }) {
   return (
     <div className="flex min-h-dvh flex-col">

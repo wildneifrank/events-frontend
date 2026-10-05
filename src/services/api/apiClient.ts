@@ -68,7 +68,6 @@ async function request<T>(method: string, path: string, options: RequestOptions 
   return payload as T
 }
 
-/** Thin HTTP client for the Express API. */
 export const apiClient = {
   get: <T>(path: string, options?: RequestOptions) => request<T>('GET', path, options),
   post: <T>(path: string, body?: unknown, options?: RequestOptions) =>

@@ -37,10 +37,6 @@ import { clone, daysFromNow, normalize, paginate, simulateNetwork, toDayKey } fr
 const MAX_TICKETS_PER_ORDER = 10
 const MOCK_TOKEN_PREFIX = 'mock.'
 
-/* ------------------------------------------------------------------ */
-/* Session helpers                                                     */
-/* ------------------------------------------------------------------ */
-
 function currentUser(): User {
   const token = tokenStorage.token()
   const userId = token?.startsWith(MOCK_TOKEN_PREFIX) ? token.slice(MOCK_TOKEN_PREFIX.length) : null
@@ -68,10 +64,6 @@ function findEvent(id: string): Event {
   if (!event) throw new ApiError('Evento não encontrado.', 404, 'EVENT_NOT_FOUND')
   return event
 }
-
-/* ------------------------------------------------------------------ */
-/* Events                                                              */
-/* ------------------------------------------------------------------ */
 
 function matchesSearch(event: Event, search: string): boolean {
   const haystack = normalize(
@@ -194,10 +186,6 @@ export const eventsMockService: EventsService = {
   },
 }
 
-/* ------------------------------------------------------------------ */
-/* Tickets                                                             */
-/* ------------------------------------------------------------------ */
-
 const UPCOMING_GRACE_MS = 12 * 3_600_000
 
 function isUpcomingTicket(ticket: Ticket, now = Date.now()): boolean {
@@ -251,10 +239,6 @@ export const ticketsMockService: TicketsService = {
     return clone(paginate(filtered, query.page, query.pageSize ?? 10))
   },
 }
-
-/* ------------------------------------------------------------------ */
-/* Orders                                                              */
-/* ------------------------------------------------------------------ */
 
 function nextOrderNumber(orders: Order[]): string {
   const highest = orders.reduce(
@@ -310,7 +294,6 @@ export const ordersMockService: OrdersService = {
       throw new ApiError(`Limite de ${MAX_TICKETS_PER_ORDER} ingressos por pedido.`, 422)
     }
 
-    // Validate everything before mutating — the backend will do this inside a DB transaction.
     const lines = items.map((item) => {
       const batch = event.batches.find((candidate) => candidate.id === item.batchId)
       if (!batch || !isBatchPurchasable(batch)) {
@@ -371,10 +354,6 @@ export const ordersMockService: OrdersService = {
     return clone({ order, ticketIds: tickets.map((ticket) => ticket.id) })
   },
 }
-
-/* ------------------------------------------------------------------ */
-/* Dashboard                                                           */
-/* ------------------------------------------------------------------ */
 
 export const dashboardMockService: DashboardService = {
   async getDashboardStats() {
@@ -441,10 +420,6 @@ export const dashboardMockService: DashboardService = {
     }
   },
 }
-
-/* ------------------------------------------------------------------ */
-/* Auth                                                                */
-/* ------------------------------------------------------------------ */
 
 export const authMockService: AuthService = {
   async login({ email, password }) {

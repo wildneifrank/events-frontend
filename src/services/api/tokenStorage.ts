@@ -10,10 +10,6 @@ function safe<T>(action: () => T, fallback: T): T {
   }
 }
 
-/**
- * Where the session lives: localStorage when "remember me" is checked,
- * sessionStorage otherwise. Shared by the HTTP client and the mock layer.
- */
 export const tokenStorage = {
   read(): AuthSession | null {
     const raw = safe(() => localStorage.getItem(KEY) ?? sessionStorage.getItem(KEY), null)

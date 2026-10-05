@@ -6,7 +6,6 @@ interface ImageWithFallbackProps extends ImgHTMLAttributes<HTMLImageElement> {
   fallback: ReactNode
 }
 
-/** Lazy image that fades in and swaps to a designed fallback when it fails to load. */
 export function ImageWithFallback({
   src,
   fallback,
@@ -18,7 +17,6 @@ export function ImageWithFallback({
     src,
     status: 'loading',
   })
-  // Reset when the source changes (derived state, no effect needed).
   const status = state.src === src ? state.status : 'loading'
   if (state.src !== src) setState({ src, status: 'loading' })
 

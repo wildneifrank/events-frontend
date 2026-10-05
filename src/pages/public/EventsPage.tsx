@@ -49,7 +49,6 @@ export default function EventsPage() {
   const events = useEvents(query)
   const cities = useEventCities()
 
-  /** Updates URL params; any filter change resets pagination. */
   const update = (changes: Record<string, string | null>, keepPage = false) => {
     setParams(
       (current) => {
@@ -65,7 +64,6 @@ export default function EventsPage() {
     )
   }
 
-  // Sync the debounced search box into the URL (only when the typed value changes).
   useEffect(() => {
     const term = debouncedSearch.trim()
     setParams(

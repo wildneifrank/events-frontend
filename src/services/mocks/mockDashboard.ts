@@ -2,11 +2,6 @@ import type { KpiValue } from '@/types'
 
 import { createRandom } from './mockUtils'
 
-/**
- * Baseline traffic that represents sales made through channels not modelled
- * in the mock orders (box office, partners…). New mock orders are added on top,
- * so the dashboard reacts to purchases made during the demo.
- */
 export function createDailyBaseline(days = 7) {
   const random = createRandom(7)
   return Array.from({ length: days }, (_, index) => {
@@ -26,5 +21,4 @@ export const KPI_CHANGES: Record<
   orders: -0.024,
 }
 
-/** Orders sold outside the seeded list, so the KPI resembles a real operation. */
 export const HISTORICAL_ORDERS = 6_812

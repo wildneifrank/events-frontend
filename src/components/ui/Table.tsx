@@ -2,8 +2,6 @@ import type { HTMLAttributes, ReactNode, TdHTMLAttributes, ThHTMLAttributes } fr
 
 import { cn } from '@/utils/cn'
 
-/* Low-level primitives ------------------------------------------------ */
-
 export function Table({ className, ...props }: HTMLAttributes<HTMLTableElement>) {
   return (
     <div className="overflow-x-auto">
@@ -46,8 +44,6 @@ export function TD({ className, ...props }: TdHTMLAttributes<HTMLTableCellElemen
   )
 }
 
-/* DataTable ------------------------------------------------------------ */
-
 export interface Column<T> {
   id: string
   header: ReactNode
@@ -61,15 +57,10 @@ interface DataTableProps<T> {
   columns: Column<T>[]
   rowKey: (row: T) => string
   caption: string
-  /** Rendered instead of the table on small screens. */
   mobileCard?: (row: T) => ReactNode
   className?: string
 }
 
-/**
- * Table on md+ screens; a stacked card list on mobile (when `mobileCard` is provided),
- * so admin screens stay usable without horizontal scrolling.
- */
 export function DataTable<T>({
   rows,
   columns,

@@ -44,7 +44,6 @@ interface ButtonLinkProps extends LinkProps, Omit<StyleOptions, 'className'> {
   rightIcon?: ReactNode
 }
 
-/** A router link that looks like a button — use for navigation, never `<Button onClick={navigate}>`. */
 export function ButtonLink({
   variant,
   size,

@@ -13,10 +13,6 @@ interface BannerUploadProps {
   error?: string
 }
 
-/**
- * Banner picker with drag & drop and preview. In mock mode the image is kept as a
- * data URL; with the real API the file will be uploaded (S3) and replaced by its URL.
- */
 export function BannerUpload({ value, onChange, error }: BannerUploadProps) {
   const inputRef = useRef<HTMLInputElement>(null)
   const id = useId()

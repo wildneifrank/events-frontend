@@ -4,7 +4,6 @@ import { type KeyboardEvent, useCallback, useId, useRef, useState } from 'react'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { cn } from '@/utils/cn'
 
-/* Dates are handled as local "YYYY-MM-DD" strings to avoid timezone drift. */
 const pad = (value: number) => String(value).padStart(2, '0')
 const toKey = (date: Date) =>
   `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`
@@ -40,7 +39,6 @@ interface DatePickerProps {
   onChange: (value: string | null) => void
   label?: string
   placeholder?: string
-  /** Earliest selectable day, "YYYY-MM-DD" */
   min?: string
   className?: string
 }

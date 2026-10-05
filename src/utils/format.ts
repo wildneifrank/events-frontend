@@ -42,7 +42,6 @@ export const formatDateTime = (iso: string) => `${formatDate(iso)}, ${formatTime
 export const formatWeekday = (iso: string) =>
   weekdayShort.format(new Date(iso)).replace('.', '').toUpperCase()
 
-/** Parts used by the calendar-style date badge: { day: '12', month: 'OUT' } */
 export function dateBadgeParts(iso: string) {
   const date = new Date(iso)
   return {

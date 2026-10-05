@@ -25,7 +25,6 @@ interface SelectProps<T extends string> extends Omit<
   containerClassName?: string
 }
 
-/** Native select for full keyboard/screen-reader support, styled to match the design system. */
 export function Select<T extends string>({
   label,
   hint,

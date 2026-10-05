@@ -16,7 +16,6 @@ export function maskCpf(value: string): string {
     .replace(/(\d{3})(\d{1,2})$/, '$1-$2')
 }
 
-/** Validates a CPF using the official check-digit algorithm. */
 export function isValidCpf(value: string): boolean {
   const cpf = onlyDigits(value)
   if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false

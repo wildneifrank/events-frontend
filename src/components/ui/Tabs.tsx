@@ -22,7 +22,6 @@ const tabIds = (id: string, value: string) => ({
   panel: `${id}-panel-${value}`,
 })
 
-/** WAI-ARIA tabs with roving tabindex and arrow-key navigation. */
 export function Tabs<T extends string>({
   id,
   items,

@@ -12,7 +12,6 @@ interface DrawerProps {
   className?: string
 }
 
-/** Off-canvas panel (mobile navigation) built on native <dialog>. */
 export function Drawer({ open, onClose, label, children, side = 'left', className }: DrawerProps) {
   const ref = useRef<HTMLDialogElement>(null)
 

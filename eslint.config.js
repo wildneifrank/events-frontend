@@ -26,7 +26,6 @@ export default tseslint.config(
     },
   },
   {
-    // Route table declares lazy() page components; it is not a component module itself.
     files: ['src/app/router/router.tsx'],
     rules: { 'react-refresh/only-export-components': 'off' },
   },

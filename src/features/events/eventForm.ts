@@ -1,6 +1,5 @@
 import type { Event, EventCategory, EventInput, EventStatus } from '@/types'
 
-/** Form model: flat strings so inputs stay controlled; converted to `EventInput` on submit. */
 export interface BatchFormValues {
   key: string
   id?: string
@@ -124,7 +123,6 @@ export function eventToForm(event: Event): EventFormValues {
 export function formToInput(values: EventFormValues): EventInput {
   const startsAt = toIso(values.date, values.startTime)
   let endsAt = toIso(values.date, values.endTime)
-  // End time earlier than start means the event runs past midnight.
   if (endsAt <= startsAt) endsAt = new Date(new Date(endsAt).getTime() + 86_400_000).toISOString()
 
   return {

@@ -19,11 +19,6 @@ import type {
 
 import { apiClient } from './apiClient'
 
-/**
- * HTTP implementations of the service contracts, targeting the Express API.
- * Enabled with VITE_USE_MOCKS=false. Endpoint paths are the expected REST shape;
- * adjust them here — and only here — if the backend diverges.
- */
 export const eventsHttpService: EventsService = {
   getEvents: (query = {}) => apiClient.get<Paginated<Event>>('/events', { query: { ...query } }),
   getEventById: (id) => apiClient.get<Event>(`/events/${id}`),

@@ -18,10 +18,6 @@ function isFinderArea(x: number, y: number): boolean {
   return inBox(0, 0) || inBox(SIZE - 8, 0) || inBox(0, SIZE - 8)
 }
 
-/**
- * Deterministic, visually QR-like matrix for mock tickets.
- * Not a scannable code — the backend worker will generate the real one.
- */
 function buildModules(value: string): [number, number][] {
   let seed = hash(value)
   const next = () => {

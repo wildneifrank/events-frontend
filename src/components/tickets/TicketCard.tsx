@@ -27,7 +27,6 @@ export function TicketCard({ ticket }: { ticket: Ticket }) {
           className={cn('h-32 w-full shrink-0 sm:h-auto sm:w-44', muted && 'grayscale')}
         />
 
-        {/* Perforation between stub and body */}
         <div className="relative hidden w-0 sm:block" aria-hidden="true">
           <span className="border-border bg-background absolute -top-3 -left-3 size-6 rounded-full border" />
           <span className="border-border bg-background absolute -bottom-3 -left-3 size-6 rounded-full border" />

@@ -15,11 +15,6 @@ function readValidSession(): AuthSession | null {
   return session
 }
 
-/**
- * Holds the authenticated user. Mock and real auth share this flow:
- * the service returns a session, which is persisted by `tokenStorage`
- * and attached as a Bearer token by the API client.
- */
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<AuthSession | null>(readValidSession)
 

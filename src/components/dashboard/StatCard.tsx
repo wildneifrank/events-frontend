@@ -9,7 +9,6 @@ interface StatCardProps {
   label: string
   value: string
   icon: ReactNode
-  /** Relative change vs. previous period (0.12 = +12%). */
   change?: number
   changeLabel?: string
 }

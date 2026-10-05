@@ -16,7 +16,6 @@ export function SkeletonText({ lines = 3, className }: { lines?: number; classNa
   )
 }
 
-/** Wraps skeleton placeholders so assistive tech announces the loading state once. */
 export function LoadingRegion({
   label = 'Carregando',
   children,

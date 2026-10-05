@@ -4,17 +4,11 @@ export interface RankedBarItem {
   id: string
   label: string
   value: number
-  /** Formatted value shown at the end of the row. */
   display: string
-  /** Secondary text under the label. */
   detail?: string
   icon?: ReactNode
 }
 
-/**
- * Ranked horizontal bars — a single hue encodes magnitude, identity is carried by
- * the text label (never by color), and every value is printed so no tooltip is needed.
- */
 export function RankedBars({ items, caption }: { items: RankedBarItem[]; caption: string }) {
   const max = Math.max(...items.map((item) => item.value), 1)
 

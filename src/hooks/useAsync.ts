@@ -7,7 +7,6 @@ export type AsyncStatus = 'loading' | 'success' | 'error'
 
 interface Settled<T> {
   key: string
-  /** Request key without the reload counter. */
   baseKey: string
   data?: T
   error?: string
@@ -18,22 +17,13 @@ export interface AsyncResult<T> {
   status: AsyncStatus
   data: T | undefined
   error: string | undefined
-  /** HTTP-like status of the failure (e.g. 404), when known. */
   errorStatus: number | undefined
-  /** Refetching the same request (reload/poll) while its previous data is displayed. */
   isRefreshing: boolean
-  /** Loading a different request while data from the previous one is displayed. */
   isPlaceholder: boolean
   reload: () => void
-  /** Locally patch the cached data (e.g. after a mutation). */
   setData: (updater: (current: T | undefined) => T | undefined) => void
 }
 
-/**
- * Minimal data-fetching hook. `key` identifies the request: whenever it
- * changes the fetcher runs again. Pass `null` to skip fetching.
- * Race-safe: responses for stale keys are ignored.
- */
 export function useAsync<T>(key: string | null, fetcher: () => Promise<T>): AsyncResult<T> {
   const [settled, setSettled] = useState<Settled<T> | null>(null)
   const [attempt, setAttempt] = useState(0)

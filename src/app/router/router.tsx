@@ -10,7 +10,6 @@ import { RequireAuth } from '@/features/authentication/RequireAuth'
 import { RootLayout } from './RootLayout'
 import { RouteError } from './RouteError'
 
-/* Every page is code-split; layouts stay in the main chunk so navigation feels instant. */
 const HomePage = lazy(() => import('@/pages/public/HomePage'))
 const EventsPage = lazy(() => import('@/pages/public/EventsPage'))
 const EventDetailsPage = lazy(() => import('@/pages/public/EventDetailsPage'))

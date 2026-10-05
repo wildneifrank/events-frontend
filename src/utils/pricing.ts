@@ -1,4 +1,3 @@
-/** Service fee charged on top of the ticket subtotal. The backend is the source of truth. */
 export const SERVICE_FEE_RATE = 0.1
 
 const round = (value: number) => Math.round(value * 100) / 100

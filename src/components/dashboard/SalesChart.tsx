@@ -28,10 +28,6 @@ function niceMax(value: number): number {
   return step * magnitude
 }
 
-/**
- * Single-series column chart (one axis, one hue). Each column is focusable and
- * shows a tooltip on hover/focus; an sr-only table carries the same data.
- */
 export function SalesChart({ data }: { data: DailySales[] }) {
   const [metric, setMetric] = useState<Metric>('revenue')
   const [active, setActive] = useState<number | null>(null)
@@ -65,7 +61,6 @@ export function SalesChart({ data }: { data: DailySales[] }) {
       </div>
 
       <div className="relative flex h-64 gap-3" aria-describedby={tableId}>
-        {/* Y axis */}
         <div
           className="text-caption text-muted flex w-14 shrink-0 flex-col justify-between pb-7 text-right tabular-nums"
           aria-hidden="true"
@@ -78,7 +73,6 @@ export function SalesChart({ data }: { data: DailySales[] }) {
         </div>
 
         <div className="relative flex min-w-0 flex-1 flex-col">
-          {/* Grid */}
           <div
             className="pointer-events-none absolute inset-x-0 top-0 bottom-7 flex flex-col justify-between"
             aria-hidden="true"
@@ -91,7 +85,6 @@ export function SalesChart({ data }: { data: DailySales[] }) {
             ))}
           </div>
 
-          {/* Columns */}
           <ul
             className="relative flex flex-1 items-end gap-[2px]"
             onMouseLeave={() => setActive(null)}
@@ -142,7 +135,6 @@ export function SalesChart({ data }: { data: DailySales[] }) {
             })}
           </ul>
 
-          {/* X axis */}
           <div className="text-caption text-muted flex h-7 items-end gap-[2px]" aria-hidden="true">
             {data.map((day) => (
               <span key={day.date} className="flex-1 text-center">

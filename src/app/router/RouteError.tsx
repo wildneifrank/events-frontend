@@ -4,7 +4,6 @@ import { isRouteErrorResponse, useRouteError } from 'react-router-dom'
 import { ButtonLink } from '@/components/ui'
 import { ROUTES } from '@/constants/routes'
 
-/** Last-resort boundary for render errors and failed lazy chunks. */
 export function RouteError() {
   const error = useRouteError()
   const message = isRouteErrorResponse(error)

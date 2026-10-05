@@ -6,7 +6,6 @@ import { ROUTES } from '@/constants/routes'
 import { useAuth } from '@/features/authentication/useAuth'
 import type { User } from '@/types'
 
-/** Account actions shared by the desktop dropdown and the mobile drawer. */
 export function userMenuItems(user: User, onLogout: () => void): DropdownItem[] {
   return [
     ...(user.role === 'admin'

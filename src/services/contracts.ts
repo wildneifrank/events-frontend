@@ -17,10 +17,6 @@ import type {
   User,
 } from '@/types'
 
-/**
- * Contracts shared by the mock and HTTP implementations.
- * Pages and hooks depend only on these — never on a concrete implementation.
- */
 export interface EventsService {
   getEvents(query?: EventQuery): Promise<Paginated<Event>>
   getEventById(id: string): Promise<Event>
@@ -39,10 +35,8 @@ export interface AdminTicketQuery {
 }
 
 export interface TicketsService {
-  /** Tickets owned by the authenticated user. */
   getTickets(scope?: TicketScope): Promise<Ticket[]>
   getTicketById(id: string): Promise<Ticket>
-  /** Every issued ticket (admin). */
   getAllTickets(query?: AdminTicketQuery): Promise<Paginated<Ticket>>
 }
 
